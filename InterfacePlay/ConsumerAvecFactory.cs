@@ -32,7 +32,7 @@ namespace InterfacePlay
         {
             restClient = RestClientFactory.CreateRestClient(_parameterSet.RestClientType);
 
-            restClient.RestServerResponded += delegate (object sender, RestEvent restEvent)
+            restClient.RestServerResponded += (sender, restEvent) =>
             {
                 HttpStatusCode = restEvent.HttpStatusCode;
                 RestClientName = restEvent.RestClientName;
