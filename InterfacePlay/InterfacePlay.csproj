@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsumerAvecFactory.cs" />
+    <Compile Include="ConsumerAvecInterface.cs" />
     <Compile Include="ConsumerSansInterface.cs" />
     <Compile Include="Communication.cs" />
     <Compile Include="IRestClient.cs" />

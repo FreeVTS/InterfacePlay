@@ -2,17 +2,16 @@
 
 namespace InterfacePlay
 {
-    public class ConsumerAvecFactory
+    public class ConsumerAvecInterface
     {
         private const string request = "http://127.0.0.1/queryThat?option=this";
 
-        private IRestClient restClient;
-        private ParameterSet _parameterSet;
+        private IRestClient restClient = new RestClient();
 
-        public ConsumerAvecFactory(ParameterSet parameterSet)
+        public ConsumerAvecInterface()
         {
-            _parameterSet = parameterSet;
             InitializeComponent();
+            SendRequest();
         }
 
         public void SendRequest()
@@ -30,18 +29,11 @@ namespace InterfacePlay
 
         private void InitializeComponent()
         {
-            restClient = new RestClient();
-
             restClient.RestServerResponded += (sender, restEvent) =>
             {
                 HttpStatusCode = restEvent.HttpStatusCode;
                 RestClientName = restEvent.RestClientName;
             };
         }
-    }
-
-    public class ParameterSet
-    {
-        public RestClientType RestClientType { get; set; }
     }
 }
