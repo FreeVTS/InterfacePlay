@@ -12,7 +12,7 @@ namespace InterfacePlay
         public ConsumerAvecFactory(ParameterSet parameterSet)
         {
             _parameterSet = parameterSet;
-            InitializeComponent();
+            InitializeComponent(parameterSet);
         }
 
         public void SendRequest()
@@ -28,9 +28,10 @@ namespace InterfacePlay
 
         public string RestClientName { get; set; }
 
-        private void InitializeComponent()
+        private void InitializeComponent(ParameterSet parameterSet)
         {
-            restClient = new RestClient();
+            var restClientType = parameterSet.RestClientType;
+            restClient = RestClientFactory.CreateRestClient(restClientType);
 
             restClient.RestServerResponded += (sender, restEvent) =>
             {
